@@ -1,6 +1,6 @@
 # replicator
 
-![](./images/st-replicator.png)
+![star trek replicator](./images/st-replicator.png)
 
 Turn one image into many.
 
