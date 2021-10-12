@@ -1,0 +1,41 @@
+.form_wrapper {
+  height: 90vh;
+  width: 90vw;
+}
+
+.uploadform {
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section p,
+.section input {
+  display: inline-flex;
+  padding: 0px 5px;
+}
+
+.submit {
+  flex: 0 1 100%;
+  display: flex;
+}
+
+.submit input {
+  margin: auto;
+}
+
+.error {
+  color: red;
+  display: inline;
+}
