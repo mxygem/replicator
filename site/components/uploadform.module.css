@@ -8,27 +8,43 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: center;
+  align-items: stretch;
   justify-content: center;
-  align-items: flex-start;
   gap: 10px;
 }
 
-.section {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.title {
+  margin: 5px 0px 3px;
 }
 
-.section p,
-.section input {
+.section {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 2px solid grey;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.option p,
+.option input {
   display: inline-flex;
-  padding: 0px 5px;
+  margin-right: 5px;
+}
+
+.option input[type="number"] {
+  width: 4.5em;
 }
 
 .submit {
   flex: 0 1 100%;
   display: flex;
+  /* todo: more style & font size */
 }
 
 .submit input {

@@ -24,54 +24,56 @@ export default function Upload({ title }) {
           {/* config options */}
           <div className={uploadstyles.section} name="config">
             <h3>Configuration</h3>
+
             {/* output count */}
-            <div>
-              <p>Rendition Count</p>
-              <input
-                type="number"
-                defaultValue="3"
-                {...register("count", { min: 2, max: 10 })}
-              />
+            <div className={uploadstyles.option}>
+              <h4 className={uploadstyles.title}>Rendition Count</h4>
+              <div>
+                <input
+                  type="number"
+                  defaultValue="3"
+                  {...register("count", { min: 2, max: 10 })}
+                />
+              </div>
             </div>
 
-            <div>
-              {/* dimension min/max */}
-              <p>Dimension Minimum</p>
-              <input
-                type="number"
-                defaultValue="10"
-                {...register("dimension-min", { min: 10, max: 90 })}
-              />
+            {/* dimension min/max */}
+            <div className={uploadstyles.option}>
+              <h4 className={uploadstyles.title}>Dimension Range %</h4>
+              <div>
+                <p>Min</p>
+                <input
+                  type="number"
+                  defaultValue="10"
+                  {...register("dimension-min", { min: 10, max: 90 })}
+                />
+                <p>Max</p>
+                <input
+                  type="number"
+                  defaultValue="90"
+                  {...register("dimension-max", { min: 10, max: 90 })}
+                />
+              </div>
             </div>
 
-            <div>
-              <p>Dimension Maximum</p>
-              <input
-                type="number"
-                defaultValue="90"
-                {...register("dimension-max", { min: 10, max: 90 })}
-              />
-            </div>
-
-            <div>
-              <p>Quality Minimum</p>
-              <input
-                type="number"
-                defaultValue="10"
-                {...register("quality-min", { min: 10, max: 90 })}
-              />
-            </div>
             {/* quality min/max */}
-
-            <div>
-              <p>Quality Maximum</p>
-              <input
-                type="number"
-                defaultValue="90"
-                {...register("quality-max", { min: 10, max: 90 })}
-              />
+            <div className={uploadstyles.option}>
+              <h4 className={uploadstyles.title}>Quality Range %</h4>
+              <div>
+                <p>Min</p>
+                <input
+                  type="number"
+                  defaultValue="10"
+                  {...register("quality-min", { min: 10, max: 90 })}
+                />
+                <p>Max</p>
+                <input
+                  type="number"
+                  defaultValue="90"
+                  {...register("quality-max", { min: 10, max: 90 })}
+                />
+              </div>
             </div>
-
             {/* format/extensions */}
             {/* email */}
           </div>
@@ -82,7 +84,7 @@ export default function Upload({ title }) {
             {/* direct upload */}
             <div>
               {/* image or json */}
-              <p>Direct</p>
+              <input type="radio" {...register("upload")} value="Upload" />
               <input {...register("upload")} />
             </div>
             {/* remote upload */}
