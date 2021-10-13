@@ -6,7 +6,11 @@ export default function FAQPage() {
   const faqs = [
     {
       q: "What does this this do?",
-      a: "It turns one or more images into many different versions of the same image.",
+      a: "It turns one or more images into many different versions of the same image. `Replicator` uses the configuration options available to determine a subset of images to make.",
+    },
+    {
+      q: "What are my options?",
+      a: "Currently, you can provide a target count of images, specify the range of image quality, and range of size. These values are a fraction of the base image's values.",
     },
     {
       q: "Where can I find an example of a valid config file?",
@@ -14,8 +18,8 @@ export default function FAQPage() {
       l: true,
     },
     {
-      q: "test question 3",
-      a: "test answer 3",
+      q: "test question ABC",
+      a: "test answer XYZ",
     },
   ];
 

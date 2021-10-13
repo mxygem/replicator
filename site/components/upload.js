@@ -16,7 +16,6 @@ export default function Upload({ title }) {
       <h1 className={styles.title}>{title}</h1>
 
       <div className={uploadstyles.form_wrapper}>
-        {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
         <form
           className={uploadstyles.uploadform}
           onSubmit={handleSubmit(onSubmit)}
