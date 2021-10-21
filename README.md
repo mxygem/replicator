@@ -6,7 +6,7 @@ Turn one image into many.
 
 ## about
 
-This is a project created during 20% time meant to allow me to learn and gain more experience in the various technologies related to my professional work. Some of it is new to me, some of it will be new to the tech stack.
+This is the home for a project being built during 20% time meant to allow me to gain experience in the various technologies related to my professional work. Some of it is new to me, some of it will be new to the tech stack.
 
 ## tech
 
