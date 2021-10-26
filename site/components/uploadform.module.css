@@ -1,3 +1,23 @@
+.main {
+  margin: 5rem 0;
+  max-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: flex-start;
+}
+
+.preview {
+  padding-top: 5vh;
+  min-width: 500px;
+  min-height: 500px;
+  height: 90vh;
+  width: 90vw;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+}
+
 .form_wrapper {
   height: 90vh;
   width: 90vw;

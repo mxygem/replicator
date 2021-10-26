@@ -1,6 +1,8 @@
 import styles from "../styles/Home.module.css";
 import uploadstyles from "./uploadform.module.css";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import Preview from "../components/preview";
 
 export default function Upload({ title }) {
   const {
@@ -9,95 +11,50 @@ export default function Upload({ title }) {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const [showPreview, setShowPreview] = useState("");
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("title", data.file[0].name);
+    formData.append("config", null);
+    formData.append("file", data.file[0]);
+
+    const res = await fetch("http://localhost:3000/uploads", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    }).then((res) => res);
+
+    const json = await res.json();
+    setShowPreview(json.file.url);
+  };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{title}</h1>
 
-      <div className={uploadstyles.form_wrapper}>
-        <form
-          className={uploadstyles.uploadform}
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          {/* config options */}
-          <div className={uploadstyles.section} name="config">
-            <h3>Configuration</h3>
-
-            {/* output count */}
-            <div className={uploadstyles.option}>
-              <h4 className={uploadstyles.title}>Rendition Count</h4>
+      <div className={uploadstyles.main}>
+        <div className={uploadstyles.form_wrapper}>
+          <form
+            className={uploadstyles.uploadform}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className={uploadstyles.section} name="upload">
+              <h3>Upload</h3>
               <div>
-                <input
-                  type="number"
-                  defaultValue="3"
-                  {...register("count", { min: 2, max: 10 })}
-                />
+                <input type="file" {...register("file")} />
               </div>
             </div>
 
-            {/* dimension min/max */}
-            <div className={uploadstyles.option}>
-              <h4 className={uploadstyles.title}>Dimension Range %</h4>
-              <div>
-                <p>Min</p>
-                <input
-                  type="number"
-                  defaultValue="10"
-                  {...register("dimension-min", { min: 10, max: 90 })}
-                />
-                <p>Max</p>
-                <input
-                  type="number"
-                  defaultValue="90"
-                  {...register("dimension-max", { min: 10, max: 90 })}
-                />
-              </div>
+            <div className={uploadstyles.submit}>
+              <input type="submit" />
             </div>
+          </form>
+        </div>
 
-            {/* quality min/max */}
-            <div className={uploadstyles.option}>
-              <h4 className={uploadstyles.title}>Quality Range %</h4>
-              <div>
-                <p>Min</p>
-                <input
-                  type="number"
-                  defaultValue="10"
-                  {...register("quality-min", { min: 10, max: 90 })}
-                />
-                <p>Max</p>
-                <input
-                  type="number"
-                  defaultValue="90"
-                  {...register("quality-max", { min: 10, max: 90 })}
-                />
-              </div>
-            </div>
-            {/* format/extensions */}
-            {/* email */}
-          </div>
-
-          {/* upload options */}
-          <div className={uploadstyles.section} name="upload">
-            <h3>Upload</h3>
-            {/* direct upload */}
-            <div>
-              {/* image or json */}
-              <input type="radio" {...register("upload")} value="Upload" />
-              <input {...register("upload")} />
-            </div>
-            {/* remote upload */}
-            <div>
-              {/* config location (url) */}
-              <p>Remote</p>
-              <input {...register("remote")} />
-            </div>
-          </div>
-
-          <div className={uploadstyles.submit}>
-            <input type="submit" />
-          </div>
-        </form>
+        {showPreview != "" ? <Preview url={showPreview} /> : null}
       </div>
     </div>
   );
